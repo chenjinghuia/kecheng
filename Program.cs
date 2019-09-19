@@ -26,24 +26,27 @@ namespace 开发课程
             Console.WriteLine("name is type:" + agetype.ToString())
             Console.WriteLine("name is type:" + shenmetype.ToString());*/
 
-           /* for (int i=0;i<10;i++)//2.3.3.变量的作用域
-            {
-                Console.Write(i);
-            }
-            Console.WriteLine();
-            for (int i = 9;i>= 0;i--)
-            {
-                Console.Write(i);
-            }
-            Console.WriteLine();
-            /*int j=20;
-            for(int i=0;i<10;i++)
-            {
-                int j = 30;
-                Console.WriteLine(i + j);
-            }
-            int j = 30;
-            Console.WriteLine(j);*/
+            /* for (int i=0;i<10;i++)//2.3.3.变量的作用域
+             {
+                 Console.Write(i);
+             }
+             Console.WriteLine();
+             for (int i = 9;i>= 0;i--)
+             {
+                 Console.Write(i);
+             }
+             Console.WriteLine();
+             /*int j=20;
+             for(int i=0;i<10;i++)
+             {
+                 int j = 30;
+                 Console.WriteLine(i + j);
+             }
+             int j = 30;
+             Console.WriteLine(j);*/
+            //Console.WriteLine(bianliang.j);
+
+            const int a = 100;//const是用来定义其值在使用过程中不会发生变化的变量
 
         }
     }
