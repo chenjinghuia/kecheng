@@ -2,10 +2,10 @@
 
 namespace 开发课程
 {
-    class bianliang
+    /*class bianliang
     {
         static int j = 20;
-    }
+    }*/
     class Program
     {
         static void Main(string[] args)
@@ -14,7 +14,7 @@ namespace 开发课程
             Console.ReadLine();
             return;*/
 
-            /*int d=10;
+            /*int d=10;//2.3.2变量的推断
             Console.WriteLine(d);
             var name = "hello world";
             var age = 25;
@@ -26,7 +26,7 @@ namespace 开发课程
             Console.WriteLine("name is type:" + agetype.ToString())
             Console.WriteLine("name is type:" + shenmetype.ToString());*/
 
-            for (int i=0;i<10;i++)
+           /* for (int i=0;i<10;i++)//2.3.3.变量的作用域
             {
                 Console.Write(i);
             }
@@ -41,9 +41,9 @@ namespace 开发课程
             {
                 int j = 30;
                 Console.WriteLine(i + j);
-            }*/
+            }
             int j = 30;
-            Console.WriteLine(j);
+            Console.WriteLine(j);*/
 
         }
     }
