@@ -60,13 +60,78 @@ namespace 开发课程
             y.value = 50;
             Console.WriteLine(x.value);*/
 
-            string s1 = "my love";//2.4.4string类型
+            /*string s1 = "my love";//2.4.4string类型
             string s2 = s1;
             Console.WriteLine("s1 is:" + s1);
             Console.WriteLine("s2 is:" + s2);
             s1 = "I love";
             Console.WriteLine("s1 is now:" + s1);
-            Console.WriteLine("s2 is now:" + s2);
+            Console.WriteLine("s2 is now:" + s2);*/
+
+            /*Console.WriteLine("请输入你的分数判定等级");//if和else判定
+            int input;
+            input = int.Parse(Console.ReadLine());//两种方法转换整数类型，int.parse（）或者          
+            if (input < 60&&input>=0)
+            {
+                Console.WriteLine("成绩不合格，请加倍努力！");
+            }
+            else if (input >= 60 && input < 70)
+            {
+                Console.WriteLine("成绩合格，再接再厉！");
+            }
+            else if (input >= 70 && input < 85)
+            {
+                Console.WriteLine("成绩良好，继续加油哦！");
+            }
+            else if (input >= 85 && input < 101)
+            {
+                Console.WriteLine("成绩优秀，继续保持！");
+            }
+            else
+                Console.WriteLine("你的输入有误，请重新输入！");
+
+            Console.WriteLine("请输入你的分数判定等级");//for循环方法                     
+            for(int i=0;i<10;i++)
+            {   int input; 
+                input = int.Parse(Console.ReadLine());           
+                switch(input/10)
+                {
+                    case 10:
+                        Console.WriteLine("成绩优秀!");break;
+                    case 9:
+                        Console.WriteLine("成绩优秀!"); break;
+                    case 8:
+                        Console.WriteLine("成绩良好!"); break;
+                    case 7:
+                        Console.WriteLine("成绩合格!"); break;
+                    case 6:
+                        Console.WriteLine("成绩合格!"); break;
+                    default:
+                        Console.WriteLine("成绩不合格!"); break;
+
+                }
+            }*/
+
+            /*int[] array = new int[] { 0, 1, 1, 3, 4, 6, 8, 10 };//foreach循环
+            foreach(int i in array)
+            {
+                Console.WriteLine(i);
+            }
+            Console.WriteLine();
+            int count = 0;
+            foreach(int i in array)
+            {
+                count++;
+                Console.WriteLine("array[{0}]:{1}",count,i);
+            }*/
+
+            int a = 10;//while循环方法
+            while(a<20)
+            {
+                Console.WriteLine("a的值:" + a);
+                a++;
+            }
+            Console.WriteLine();
         }
     }
 }
