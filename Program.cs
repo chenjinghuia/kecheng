@@ -6,6 +6,10 @@ namespace 开发课程
     {
         static int j = 20;
     }*/
+    class lei
+    {
+        public int value;
+    }
     class Program
     {
         static void Main(string[] args)
@@ -46,7 +50,16 @@ namespace 开发课程
              Console.WriteLine(j);*/
             //Console.WriteLine(bianliang.j);
 
-            const int a = 100;//const是用来定义其值在使用过程中不会发生变化的变量
+            //const int a = 100;//const是用来定义其值在使用过程中不会发生变化的变量
+
+            lei x,y;//2.4.1值类型和引用类型
+            x = new lei();
+            x.value = 30;
+            y = x;
+            Console.WriteLine(y.value);
+            y.value = 50;
+            Console.WriteLine(x.value);
+
 
         }
     }
