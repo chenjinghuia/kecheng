@@ -6,10 +6,10 @@ namespace 开发课程
     {
         static int j = 20;
     }*/
-    class lei
+    /*class lei
     {
         public int value;
-    }
+    }*/
     class Program
     {
         static void Main(string[] args)
@@ -52,15 +52,21 @@ namespace 开发课程
 
             //const int a = 100;//const是用来定义其值在使用过程中不会发生变化的变量
 
-            lei x,y;//2.4.1值类型和引用类型
+            /*lei x,y;//2.4.1值类型和引用类型
             x = new lei();
             x.value = 30;
             y = x;
             Console.WriteLine(y.value);
             y.value = 50;
-            Console.WriteLine(x.value);
+            Console.WriteLine(x.value);*/
 
-
+            string s1 = "my love";//2.4.4string类型
+            string s2 = s1;
+            Console.WriteLine("s1 is:" + s1);
+            Console.WriteLine("s2 is:" + s2);
+            s1 = "I love";
+            Console.WriteLine("s1 is now:" + s1);
+            Console.WriteLine("s2 is now:" + s2);
         }
     }
 }
