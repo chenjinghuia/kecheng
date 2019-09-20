@@ -10,6 +10,7 @@ namespace 开发课程
     {
         public int value;
     }*/
+    public enum Day { Morning,Afternoon,Evening };
     class Program
     {
         static void Main(string[] args)
@@ -125,13 +126,20 @@ namespace 开发课程
                 Console.WriteLine("array[{0}]:{1}",count,i);
             }*/
 
-            int a = 10;//while循环方法
+            /*int a = 10;//while循环方法
             while(a<20)
             {
                 Console.WriteLine("a的值:" + a);
                 a++;
             }
-            Console.WriteLine();
+            Console.WriteLine();*/
+                
+            int x = (int)Day.Afternoon;//2.6枚举变量
+            int y = (int)Day.Morning;
+            Console.WriteLine("Afternoon:" + x);
+            Console.WriteLine("Morning:" + y);
+        
+
         }
     }
 }
