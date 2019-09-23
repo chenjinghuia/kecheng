@@ -10,7 +10,23 @@ namespace 开发课程
     {
         public int value;
     }*/
-    public enum Day { Morning,Afternoon,Evening };
+    //public enum Day { Morning,Afternoon,Evening };
+    class MathTest
+    {
+        public int value;
+        public int GetSquare()
+        {
+            return value * value;
+        }
+        public static int GetSquareOf(int x)
+        {
+            return x * x;
+        }
+        public static double GetPi()
+        {
+            return 3.14159;
+        }
+    }
     class Program
     {
         static void Main(string[] args)
@@ -133,13 +149,19 @@ namespace 开发课程
                 a++;
             }
             Console.WriteLine();*/
-                
-            int x = (int)Day.Afternoon;//2.6枚举变量
+
+            /*int x = (int)Day.Afternoon;//2.6枚举变量
             int y = (int)Day.Morning;
             Console.WriteLine("Afternoon:" + x);
-            Console.WriteLine("Morning:" + y);
-        
+            Console.WriteLine("Morning:" + y);*/
 
+            Console.WriteLine("Pi is " + MathTest.GetPi());
+            int x = MathTest.GetSquareOf(5);
+            Console.WriteLine("Square of 5 is " + x);
+            MathTest math = new MathTest();
+            math.value = 30;
+            Console.WriteLine("Value field of math variable contains " + math.value);
+            Console.WriteLine("Square of 30 is "+math.GetSquare());
         }
     }
 }
