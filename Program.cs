@@ -11,7 +11,7 @@ namespace 开发课程
         public int value;
     }*/
     //public enum Day { Morning,Afternoon,Evening };
-    class MathTest
+    class MathTest//3.3.1类方法
     {
         public int value;
         public int GetSquare()
@@ -26,7 +26,7 @@ namespace 开发课程
         {
             return 3.14159;
         }
-    }
+    }   
     class Program
     {
         static void Main(string[] args)
@@ -155,13 +155,15 @@ namespace 开发课程
             Console.WriteLine("Afternoon:" + x);
             Console.WriteLine("Morning:" + y);*/
 
-            Console.WriteLine("Pi is " + MathTest.GetPi());
+            Console.WriteLine("Pi is " + MathTest.GetPi());//3.3.1类方法
             int x = MathTest.GetSquareOf(5);
             Console.WriteLine("Square of 5 is " + x);
             MathTest math = new MathTest();
             math.value = 30;
             Console.WriteLine("Value field of math variable contains " + math.value);
             Console.WriteLine("Square of 30 is "+math.GetSquare());
+
+
         }
     }
 }
