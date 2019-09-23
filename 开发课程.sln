@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29230.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "开发课程", "开发课程.csproj", "{D0982F09-DF6B-4318-B0D8-BCF778C8A68A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "课程第三章", "..\课程第三章\课程第三章.csproj", "{A86FF92F-4060-4B77-868B-4E747CCAF889}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "课程第三章", "..\课程第三章\课程第三章.csproj", "{0204E5B5-4842-42AD-9BA3-2D0B3BCD95AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{D0982F09-DF6B-4318-B0D8-BCF778C8A68A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0982F09-DF6B-4318-B0D8-BCF778C8A68A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D0982F09-DF6B-4318-B0D8-BCF778C8A68A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A86FF92F-4060-4B77-868B-4E747CCAF889}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A86FF92F-4060-4B77-868B-4E747CCAF889}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A86FF92F-4060-4B77-868B-4E747CCAF889}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A86FF92F-4060-4B77-868B-4E747CCAF889}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0204E5B5-4842-42AD-9BA3-2D0B3BCD95AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0204E5B5-4842-42AD-9BA3-2D0B3BCD95AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0204E5B5-4842-42AD-9BA3-2D0B3BCD95AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0204E5B5-4842-42AD-9BA3-2D0B3BCD95AA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
