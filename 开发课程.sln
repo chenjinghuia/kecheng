@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "开发课程", "开发课�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "课程第三章", "..\课程第三章\课程第三章.csproj", "{BC4FC01D-2265-4F8C-908F-B20091F05281}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "课程第四章继承", "..\第四章继承\课程第四章继承.csproj", "{A1B3156B-7190-4131-984C-BA003BD375DE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "课程第四章继承", "..\第四章继承\课程第四章继承.csproj", "{EBF50383-AC0C-4136-8FD7-F9AD9640A6AD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{BC4FC01D-2265-4F8C-908F-B20091F05281}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC4FC01D-2265-4F8C-908F-B20091F05281}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC4FC01D-2265-4F8C-908F-B20091F05281}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1B3156B-7190-4131-984C-BA003BD375DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1B3156B-7190-4131-984C-BA003BD375DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1B3156B-7190-4131-984C-BA003BD375DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1B3156B-7190-4131-984C-BA003BD375DE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EBF50383-AC0C-4136-8FD7-F9AD9640A6AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EBF50383-AC0C-4136-8FD7-F9AD9640A6AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EBF50383-AC0C-4136-8FD7-F9AD9640A6AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EBF50383-AC0C-4136-8FD7-F9AD9640A6AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
