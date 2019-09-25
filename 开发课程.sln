@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "开发课程", "开发课�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "课程第三章", "..\课程第三章\课程第三章.csproj", "{BC4FC01D-2265-4F8C-908F-B20091F05281}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "课程第四章继承", "..\第四章继承\课程第四章继承.csproj", "{6EFAC3F0-B907-4EC3-B3AF-574DC1F4003A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "课程第四章继承", "..\第四章继承\课程第四章继承.csproj", "{6B27ED6A-95F8-4059-890D-F0C89D9677C5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{BC4FC01D-2265-4F8C-908F-B20091F05281}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BC4FC01D-2265-4F8C-908F-B20091F05281}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BC4FC01D-2265-4F8C-908F-B20091F05281}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6EFAC3F0-B907-4EC3-B3AF-574DC1F4003A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6EFAC3F0-B907-4EC3-B3AF-574DC1F4003A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6EFAC3F0-B907-4EC3-B3AF-574DC1F4003A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6EFAC3F0-B907-4EC3-B3AF-574DC1F4003A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B27ED6A-95F8-4059-890D-F0C89D9677C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B27ED6A-95F8-4059-890D-F0C89D9677C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B27ED6A-95F8-4059-890D-F0C89D9677C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B27ED6A-95F8-4059-890D-F0C89D9677C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
