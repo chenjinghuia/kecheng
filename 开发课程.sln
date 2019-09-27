@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "课程第四章继承", "..
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "课程第三章对象和类型", "..\课程第三章对象和类型\课程第三章对象和类型.csproj", "{CA185B49-9A8C-4944-94EA-F5256E52EF50}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "课程第五章泛型", "..\课程第五章泛型\课程第五章泛型.csproj", "{06FD8865-BEEA-4C01-9837-819A8A26DD65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "课程第五章泛型", "..\课程第五章泛型\课程第五章泛型.csproj", "{347F3D75-28D8-4D45-9340-3FE490D84B9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{CA185B49-9A8C-4944-94EA-F5256E52EF50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA185B49-9A8C-4944-94EA-F5256E52EF50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA185B49-9A8C-4944-94EA-F5256E52EF50}.Release|Any CPU.Build.0 = Release|Any CPU
-		{06FD8865-BEEA-4C01-9837-819A8A26DD65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{06FD8865-BEEA-4C01-9837-819A8A26DD65}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{06FD8865-BEEA-4C01-9837-819A8A26DD65}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{06FD8865-BEEA-4C01-9837-819A8A26DD65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{347F3D75-28D8-4D45-9340-3FE490D84B9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{347F3D75-28D8-4D45-9340-3FE490D84B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{347F3D75-28D8-4D45-9340-3FE490D84B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{347F3D75-28D8-4D45-9340-3FE490D84B9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
