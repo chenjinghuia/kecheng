@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "课程第三章对象和类
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "课程第五章泛型", "..\课程第五章泛型\课程第五章泛型.csproj", "{F58CA6D7-A468-4082-A1F0-76F1EA1ADA6B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "课程第六章数组", "..\课程第六章数组\课程第六章数组.csproj", "{781AC6BA-E278-4649-B335-7A021BB0D9C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{F58CA6D7-A468-4082-A1F0-76F1EA1ADA6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F58CA6D7-A468-4082-A1F0-76F1EA1ADA6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F58CA6D7-A468-4082-A1F0-76F1EA1ADA6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{781AC6BA-E278-4649-B335-7A021BB0D9C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{781AC6BA-E278-4649-B335-7A021BB0D9C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{781AC6BA-E278-4649-B335-7A021BB0D9C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{781AC6BA-E278-4649-B335-7A021BB0D9C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
