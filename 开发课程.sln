@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29230.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "开发课程", "开发课程.csproj", "{7D015A58-810A-459D-830E-9E97AA735A4E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "课程第三章对象和类型", "..\课程第三章对象和类型\课程第三章对象和类型.csproj", "{21F8F614-9B91-4921-BAB1-F92C7BB4FB98}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7D015A58-810A-459D-830E-9E97AA735A4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D015A58-810A-459D-830E-9E97AA735A4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D015A58-810A-459D-830E-9E97AA735A4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21F8F614-9B91-4921-BAB1-F92C7BB4FB98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21F8F614-9B91-4921-BAB1-F92C7BB4FB98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21F8F614-9B91-4921-BAB1-F92C7BB4FB98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21F8F614-9B91-4921-BAB1-F92C7BB4FB98}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
