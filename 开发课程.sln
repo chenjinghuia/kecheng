@@ -3,14 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29230.47
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "开发课程", "开发课程.csproj", "{D0982F09-DF6B-4318-B0D8-BCF778C8A68A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "课程第四章继承", "..\课程第四章继承\课程第四章继承.csproj", "{263E142F-3B00-4CD7-AD22-3AB8F68BA61C}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "课程第三章对象和类型", "..\课程第三章对象和类型\课程第三章对象和类型.csproj", "{CA185B49-9A8C-4944-94EA-F5256E52EF50}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "课程第五章泛型", "..\课程第五章泛型\课程第五章泛型.csproj", "{F58CA6D7-A468-4082-A1F0-76F1EA1ADA6B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "课程第六章数组", "..\课程第六章数组\课程第六章数组.csproj", "{C64C296E-81A5-4957-B19B-3217F3B88EE0}"
 EndProject
 Global
@@ -19,22 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{D0982F09-DF6B-4318-B0D8-BCF778C8A68A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0982F09-DF6B-4318-B0D8-BCF778C8A68A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0982F09-DF6B-4318-B0D8-BCF778C8A68A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0982F09-DF6B-4318-B0D8-BCF778C8A68A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{263E142F-3B00-4CD7-AD22-3AB8F68BA61C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{263E142F-3B00-4CD7-AD22-3AB8F68BA61C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{263E142F-3B00-4CD7-AD22-3AB8F68BA61C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{263E142F-3B00-4CD7-AD22-3AB8F68BA61C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CA185B49-9A8C-4944-94EA-F5256E52EF50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CA185B49-9A8C-4944-94EA-F5256E52EF50}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CA185B49-9A8C-4944-94EA-F5256E52EF50}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CA185B49-9A8C-4944-94EA-F5256E52EF50}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F58CA6D7-A468-4082-A1F0-76F1EA1ADA6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F58CA6D7-A468-4082-A1F0-76F1EA1ADA6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F58CA6D7-A468-4082-A1F0-76F1EA1ADA6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F58CA6D7-A468-4082-A1F0-76F1EA1ADA6B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C64C296E-81A5-4957-B19B-3217F3B88EE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C64C296E-81A5-4957-B19B-3217F3B88EE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C64C296E-81A5-4957-B19B-3217F3B88EE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
