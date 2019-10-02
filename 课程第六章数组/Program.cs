@@ -59,9 +59,8 @@ namespace 课程第六章数组
                           "unexpected compare type");
             }
         }
-    }*/
-
-    /*static Person[] GetPeoples()
+    }*/  
+    /*static Person[] GetPeoples()//声明为返回类型
     {
         return new Person[]
             {
@@ -70,8 +69,13 @@ namespace 课程第六章数组
                 new Person {FirstName ="Ayrton",LastName="Sonna"},
                 new Person {FirstName ="Graham",LastName="Hill"},
             };
+        static void DisplayPeoples(Person[] persons)//声明为参数，把数组传递给方法
+        {
+
+        }
 
     }*/
+   
 
     class Program
     {
@@ -195,8 +199,28 @@ namespace 课程第六章数组
            {
                Console.WriteLine(P);
            }*/
-
-
+            
+            int[] ar1 = { 1, 4, 5, 11, 13, 18 };
+            int[] ar2 = { 3, 4, 5, 18, 21, 27, 33 };
+            var segments = new ArraySegment<int>[2]
+            {
+                new ArraySegment<int>(ar1,0,3),
+                new ArraySegment<int>(ar2,3,3)
+            };
+            var sum = SumOfSqgments(segments);
+            Console.WriteLine("sum of all segments: {0}", sum);
+        }
+        static int SumOfSqgments(ArraySegment<int>[] seqments)
+        {
+            int sum = 0;
+            foreach (var segment in seqments)
+            {
+                for (int i = segment.Offset; i < segment.Offset + segment.Count; i++)//offset为元素的偏移坐标，count为元素的个数
+                {
+                    sum += segment.Array[i];
+                }
+            }
+            return sum;
         }
     }
 }
