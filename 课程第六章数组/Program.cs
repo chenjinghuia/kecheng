@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace 课程第六章数组
 {
@@ -75,7 +77,125 @@ namespace 课程第六章数组
         }
 
     }*/
-   
+   public class HelloCollection
+    {
+        public IEnumerator<string> GetEnumerator()
+        {
+            yield return "Hello";
+            yield return "world";
+        }
+        public IEnumerator getEnumerator()
+        {
+            return new Enumerator(0);
+        }
+        public class Enumerator:IEnumerator<string>,IEnumerator,IDisposable
+        {
+            private int state;
+            private string current;
+            public Enumerator(int state)
+            {
+                this.state = state;
+            }
+            bool System.Collections.IEnumerator.MoveNext()
+            {
+                switch(state)
+                {
+                    case 0:
+                        current = "Hello";
+                        state = 1;
+                        return true;
+                    case 1:
+                        current = "World";
+                        state = 2;
+                        return true;
+                    case 2:
+                        break;
+                }
+                return false;
+            }
+            void System.Collections.IEnumerator.Reset()
+            {
+                throw new NotSupportedException();
+            }
+            string System.Collections.Generic.IEnumerator<string>.Current
+            {
+                get
+                {
+                    return current;
+                }
+            }
+            object System.Collections.IEnumerator.Current
+            {
+                get
+                {
+                    return current;
+                }
+            }
+            void IDisposable.Dispose()
+            {
+
+            }
+        }
+    }
+    public class MusicTitles
+    {
+        string[] names = {
+              "Tubular Bells", "Hergest Ridge",
+              "Ommadawn", "Platinum" };
+        public IEnumerator<string> GetEnumerator()
+        {
+            for(int i=0;i<4;i++)
+            {
+                yield return names[i];
+            }
+        }
+        public IEnumerable<string> Reverse()
+        {
+            for(int i=3;i>=0;i--)
+            {
+                yield return names[i];
+            }
+        }
+        public IEnumerable <string> Subset(int index,int length)
+        {
+            for(int i=index;i<index+length;i++)
+            {
+                yield return names[i];
+            }
+        }
+    }
+    public class GameMoves
+    {
+        private IEnumerator cross;
+        private IEnumerator circle;
+        public GameMoves()
+        {
+            cross = Cross();
+            circle = Circle();
+        }
+        private int move = 0;
+        const int MaxMoves = 9;
+        public IEnumerator Cross()
+        {
+            while(true)
+            {
+                Console.WriteLine("Cross, move {0}", move);
+                if (++move >= MaxMoves)
+                    yield break;
+                yield return circle;
+            }
+        }
+        public IEnumerator Circle()
+        {
+            while (true)
+            {
+                Console.WriteLine("Circle, move {0}", move);
+                if (++move >= MaxMoves)
+                    yield break;
+                yield return cross;
+            }
+        }
+    }
 
     class Program
     {
@@ -209,7 +329,18 @@ namespace 课程第六章数组
             };
             var sum = SumOfSqgments(segments);
             Console.WriteLine("sum of all segments: {0}", sum);
+
+
+            var game = new GameMoves();
+            IEnumerator enumerator = game.Cross();
+            while(enumerator.MoveNext())
+            {
+                enumerator = enumerator.Current as IEnumerator;
+            }
         }
+
+
+
         static int SumOfSqgments(ArraySegment<int>[] seqments)
         {
             int sum = 0;
@@ -222,5 +353,37 @@ namespace 课程第六章数组
             }
             return sum;
         }
+        static void HelloWorld()
+        {
+            var helloCollection = new HelloCollection();
+            foreach (var s in helloCollection)
+            {
+                Console.WriteLine(s);
+            }
+        }
+        static void MusicTitles()
+        {
+            var titles = new MusicTitles();
+            foreach (var title in titles)
+            {
+                Console.WriteLine(title);
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("reverse");
+            foreach (var title in titles.Reverse())
+            {
+                Console.WriteLine(title);
+            }
+            Console.WriteLine();
+
+            Console.WriteLine("subset");
+            foreach (var title in titles.Subset(2, 2))
+            {
+                Console.WriteLine(title);
+            }
+
+        }
+
     }
 }
