@@ -196,8 +196,44 @@ namespace 课程第六章数组
             }
         }
     }
+    public class Per:IEquatable<Per>
+    {
+        public int Id { get; private set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public override string ToString()
+        {
+            return String.Format("{0},{1},{2}", Id, FirstName, LastName);
+        }
+        public override bool Equals(object obj)
+        {
+            if (obj == null)
+                return base.Equals(obj);
+            return Equals(obj as Per);
+        }
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
+        public bool Equals(Per other)
+        {
+            if (other == null)
+                return base.Equals(other);
+            return this.Id == other.Id && this.FirstName == other.FirstName && this.LastName == other.LastName;
 
-
+        }
+    }
+    class TupleComparer:IEqualityComparer
+    {
+        public new bool Equals(object x,object y)
+        {
+            return x.Equals(y);
+        }
+        public int GetHashCode(object obj)
+        {
+            return obj.GetHashCode();
+        }
+    }
     class Program
     {
         static void Main(string[] args)
@@ -344,6 +380,36 @@ namespace 课程第六章数组
 
             var tuple=Tuple.Create<string,string,string,int,int,int,double, Tuple< int, int>> ("Stephanie", "Alina", "Nagel", 2009, 6, 2, 1.37, Tuple.Create<int, int>(52, 3490));
              Console.WriteLine(tuple.Item2);
+
+            var janet = new Per { FirstName = "Janet", LastName = "Jackson" };
+            Per[] per1 = {
+                new Per
+                {
+                    FirstName="Michael",
+                    LastName="Jackson"
+                },janet
+                    };
+            Per[] per2 = {
+                new Per
+                {
+                    FirstName="Michael",
+                    LastName="Jackson"
+                },janet
+                    };
+            if (per1 != per2)
+                Console.WriteLine("not the same reference");
+            if((per1 as IStructuralEquatable).Equals(per2,EqualityComparer<Per>.Default))
+            {
+                Console.WriteLine("the same content");
+            }
+            var t1 = Tuple.Create<int, string>(1, "Stephanie");
+            var t2 = Tuple.Create<int, string>(1, "Stephanie");
+            if (t1 != t2)
+                Console.WriteLine("not the same reference to the tuple");
+            if (t1.Equals(t2))
+                Console.WriteLine("the same content");
+            /*if (t1.Equals(t2, new TupleComparer()))
+                Console.WriteLine("equals using TupleComparer");*/
         }
 
 
