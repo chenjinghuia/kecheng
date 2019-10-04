@@ -2,6 +2,10 @@
 
 namespace 课程第七章运算符和类型强制转换
 {
+    public class SomeClass
+    {
+
+    }
     class Program
     {
         static void Main(string[] args)
@@ -70,7 +74,17 @@ namespace 课程第七章运算符和类型强制转换
             object myobject = myIntNumber;//装箱
             int mySecondNumber = (int)myobject;//拆箱
             Console.WriteLine(mySecondNumber);
-
+//ReferenceEquals()方法
+            SomeClass p, q;
+            p = new SomeClass();
+            q = new SomeClass();
+            bool B1 = ReferenceEquals(null, null);
+            bool B2 = ReferenceEquals(null, p);
+            bool B3 = ReferenceEquals(p, q);//因为x和y指向了不同的objec类
+            Console.WriteLine("B1判定:{0},B2判定:{1},B3判定:{2}",B1,B2,B3);
+            //虚拟的Equals()方法
+            //静态的Equals()方法   
+            //比较运算符（==）
         }
     }
 }
