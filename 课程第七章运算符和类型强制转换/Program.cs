@@ -52,6 +52,25 @@ namespace 课程第七章运算符和类型强制转换
             f = e ?? 10;
             Console.WriteLine(f);
 
+            long val = 30000;
+            int j = (int)val;
+            Console.WriteLine(j);
+            double price = 25.30;
+            int Price = (int)(price + 0.5);
+            Console.WriteLine(Price);
+            /*ushort z = 43;
+            char symbol = (char)c;
+            Console.WriteLine(symbol);*/
+
+            string k = "100";//预定义值
+            int K = int.Parse(k);
+            Console.WriteLine(K + 50);
+
+            int myIntNumber = 20;
+            object myobject = myIntNumber;//装箱
+            int mySecondNumber = (int)myobject;//拆箱
+            Console.WriteLine(mySecondNumber);
+
         }
     }
 }
