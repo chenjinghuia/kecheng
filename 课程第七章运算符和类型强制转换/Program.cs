@@ -58,6 +58,30 @@ namespace 课程第七章运算符和类型强制转换
         }
 
     }
+    struct Currency
+    {
+        public uint Dollars;
+        public ushort Cents;
+        public Currency (uint dollars,ushort cents)
+        {
+            this.Dollars = dollars;
+            this.Cents = cents;
+        }
+        public override string ToString()
+        {
+            return string.Format("${0},{1,-2:00}",Dollars,Cents);
+        }
+        public static implicit operator float (Currency value)
+        {
+            return value.Dollars + (value.Cents / 100.0f);
+        }//隐式转换
+        public static explicit operator Currency(float value)
+        {
+            uint dollars = (uint)value;
+            ushort cents = (ushort)((value - dollars) * 100);
+            return new Currency(dollars, cents);
+        }
+    }
 
     class Program
     {
@@ -167,9 +191,42 @@ namespace 课程第七章运算符和类型强制转换
             vect6 = new Vector(2.0, 3.0, 6.0);
             Console.WriteLine("vect4==vect5 returns:  " + (vect4 == vect5));
             Console.WriteLine("vect4==vect6 returns:  " + (vect4 == vect6));
-            Console.WriteLine("vect5==vect6 returns:  " + (vect5 == vect6));
-            Console.WriteLine();
+            Console.WriteLine("vect5==vect6 returns:  " + (vect5 == vect6));   
             Console.WriteLine("vect4!=vect6 returns:  " + (vect4 != vect6));
+
+            Console.WriteLine();
+            Currency balance = new Currency(10, 50);
+            float bal = balance;
+            Console.WriteLine(bal);
+            float amount = 45.63f;
+            Currency amount2 = (Currency)amount;
+            Console.WriteLine(amount2);
+
+
         }
+        /*static void Main()
+        {
+            try
+            {
+                Currency balance = new Currency(50, 35);
+                Console.WriteLine(balance);
+                Console.WriteLine("balance is " + balance);
+                Console.WriteLine("balance is (using ToString()) " + balance.ToString());
+                float balance2 = balance;
+                Console.WriteLine("转换成浮点型后：" + balance2);
+                balance = (Currency)balance2;
+                Console.WriteLine("强制转换后：" + balance);
+                Console.WriteLine("Now attempt to convert out of range value of"+"-￥50.50 to a Currency;");
+                checked
+                {
+                    balance = (Currency)(-50.50);
+                    Console.WriteLine("Result is" + balance.ToString());
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception occurred: " + e.Message);
+            }
+        }*/
     }
 }
