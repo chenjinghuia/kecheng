@@ -6,6 +6,59 @@ namespace 课程第七章运算符和类型强制转换
     {
 
     }
+    struct Vector
+    {
+        public double x, y, z;
+        public Vector(double x,double y,double z)
+        {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+        public Vector (Vector rhs)
+        {
+            x = rhs.x;
+            y = rhs.y;
+            z = rhs.z;
+        }
+        public override string ToString()
+        {
+            return (x+","+y+","+z);
+        }
+        public static Vector operator + (Vector lhs, Vector rhs)
+        {
+            Vector result = new Vector(lhs);
+            result.x += rhs.x;
+            result.y += rhs.y;
+            result.z += rhs.z;
+            return result;
+        }
+        public static Vector operator * (double lhs,Vector rhs)
+        {
+            return new Vector(lhs * rhs.x, lhs * rhs.y, lhs * rhs.z);
+        }
+        public static double operator *(Vector  lhs, Vector rhs)
+        {
+            return lhs.x * rhs.x+ lhs.y * rhs.y+lhs.z * rhs.z;
+        }
+        public static Vector  operator *(Vector lhs, double rhs)
+        {
+            return rhs * lhs;
+        }
+        public static bool operator == (Vector lhs,Vector rhs)
+        {
+            if (lhs.x == rhs.x && lhs.y == rhs.y && lhs.z == rhs.z)
+                return true;
+            else
+                return false;
+        }
+        public static bool operator !=(Vector lhs, Vector rhs)
+        {
+            return !(lhs == rhs);
+        }
+
+    }
+
     class Program
     {
         static void Main(string[] args)
@@ -85,6 +138,38 @@ namespace 课程第七章运算符和类型强制转换
             //虚拟的Equals()方法
             //静态的Equals()方法   
             //比较运算符（==）
+
+            int myInt = 3;
+            uint myUInt = 2;
+            double myDouble = 4.0;
+            long myLong = myInt + myUInt;
+            double myOtherDouble = myDouble + myInt;
+            Console.WriteLine("myLong的值:{0},myOtherDouble的值:{1}", myLong, myOtherDouble);
+
+            Vector vect1, vect2, vect3;
+            vect1 = new Vector(3.0, 3.0, 1.0);
+            vect2 = new Vector(2.0, -4.0, -4.0);
+            vect3 = vect1 + vect2;
+            Console.WriteLine("vect1 = " + vect1.ToString());
+            Console.WriteLine("vect2 = " + vect2.ToString());
+            Console.WriteLine("vect3 = " + vect3.ToString());
+            Console.WriteLine("2*vect3=" + 2 * vect3);
+            vect3 += vect2;
+            Console.WriteLine("返回vect3 += vect2 gives的值为" + vect3);
+            vect3 = 2*vect1;
+            Console.WriteLine("返回vect3 = 2*vect1的值为：" + vect3);
+            double dot = vect1 * vect3;
+            Console.WriteLine("返回dot = vect1 * vect3;的值为：" + dot);
+
+            Vector vect4, vect5, vect6;
+            vect4 = new Vector(3.0, 3.0, -10.0);
+            vect5 = new Vector(3.0, 3.0, -10.0);
+            vect6 = new Vector(2.0, 3.0, 6.0);
+            Console.WriteLine("vect4==vect5 returns:  " + (vect4 == vect5));
+            Console.WriteLine("vect4==vect6 returns:  " + (vect4 == vect6));
+            Console.WriteLine("vect5==vect6 returns:  " + (vect5 == vect6));
+            Console.WriteLine();
+            Console.WriteLine("vect4!=vect6 returns:  " + (vect4 != vect6));
         }
     }
 }
