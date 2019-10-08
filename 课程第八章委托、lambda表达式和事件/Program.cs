@@ -77,7 +77,12 @@ namespace 课程第八章委托_lambda表达式和事件
                 MathOperations.MultiplyByTwo,
                 MathOperations.Square
             };//把委托的事例放在数组中
-            for(int i=0;i<operations .Length;i++)
+            Func<double, double>[] Operations =
+            {
+                MathOperations.MultiplyByTwo,
+                MathOperations.Square
+            };
+            for (int i=0;i<operations .Length;i++)
             {
                 Console.WriteLine("Using operations[{0}]:", i);
                 ProcessAndDisplayNumber(operations[i], 2.0);
@@ -87,6 +92,11 @@ namespace 课程第八章委托_lambda表达式和事件
             }
         }
         static void ProcessAndDisplayNumber(DoubleOp action,double value)//把一个委托作为其第一个参数
+        {
+            double result = action(value);//调用ProcessAndDisplayNumber方法
+            Console.WriteLine("value is {0},result of operation is {1}", value, result);
+        }
+        static void ProcessAndDisplayNumber2(Func<double,double>action,double value)
         {
             double result = action(value);//调用ProcessAndDisplayNumber方法
             Console.WriteLine("value is {0},result of operation is {1}", value, result);
