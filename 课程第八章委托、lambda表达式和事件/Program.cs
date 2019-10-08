@@ -53,6 +53,17 @@ namespace 课程第八章委托_lambda表达式和事件
         {
             return value * value;
         }
+        //多播委托
+        public static void MultiplyBytwo(double value)
+        {
+            double result = value * 2;
+            Console.WriteLine("Multiplying by Moloperations:{0} gives {1}", value, result);
+        }
+        public static void square(double value)
+        {
+            double result = value * value;
+            Console.WriteLine("Squaring:{0} gives {1}", value, result);
+        }
     }
     delegate double DoubleOp(double x);//定义委托
 
@@ -132,6 +143,8 @@ namespace 课程第八章委托_lambda表达式和事件
                 Console.WriteLine();
             }
             Console.WriteLine();
+
+
             Employee[] employees =
             {
             new Employee("Bugs Bunny", 20000),
@@ -146,6 +159,15 @@ namespace 课程第八章委托_lambda表达式和事件
             {
                 Console.WriteLine(employee);
             }
+
+            Console.WriteLine();
+            Action<double> Moloperations = MathOperations.MultiplyBytwo;
+            Moloperations += MathOperations.square;
+            ProcessAndDisplayNumber3(Moloperations, 2.0);
+            ProcessAndDisplayNumber3(Moloperations, 7.94);
+            ProcessAndDisplayNumber3(Moloperations, 1.414);
+            Console.WriteLine();
+
         }
         static void ProcessAndDisplayNumber(DoubleOp action,double value)//把一个委托作为其第一个参数
         {
@@ -156,6 +178,12 @@ namespace 课程第八章委托_lambda表达式和事件
         {
             double result = action(value);//调用ProcessAndDisplayNumber方法
             Console.WriteLine("value is {0},result of operation is {1}", value, result);
+        }
+        static void ProcessAndDisplayNumber3(Action<double> action,double value)
+        {
+            Console.WriteLine();
+            Console.WriteLine("输入的vlaue的值为： " + value);
+            action(value);
         }
     }
 }
