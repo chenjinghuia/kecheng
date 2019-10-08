@@ -106,7 +106,43 @@ namespace 课程第八章委托_lambda表达式和事件
             return e1.Salary < e2.Salary;
         }
     }
-
+    public class CarInfoEventArgs : EventArgs
+    {
+        public string Car { get; private set; }
+        public CarInfoEventArgs(string car)
+        {
+            this.Car = car;
+        }
+    }
+    public class CarDealer
+    {
+        public event EventHandler<CarInfoEventArgs> NewCarInfo;
+        public void NewCar(string car)
+        {
+            Console.WriteLine("CarDealer,new car {0}", car);
+            RaiseNewCarInfo(car);
+        }
+        protected virtual void RaiseNewCarInfo(string car)
+        {
+            EventHandler<CarInfoEventArgs> newCarInfo = NewCarInfo;
+            if (newCarInfo != null)
+            {
+                newCarInfo(this, new CarInfoEventArgs(car));
+            }
+        }
+    }
+    public class Consumer
+    {
+        private string name;
+        public Consumer(string name)
+        {
+            this.name = name;
+        }
+        public void NewCarIsHere(object sender,CarInfoEventArgs e)
+        {
+            Console.WriteLine("{0}: car {1} is new", name, e.Car);
+        }
+    }
     class Program
     {
         static void Main(string[] args)
@@ -198,7 +234,16 @@ namespace 课程第八章委托_lambda表达式和事件
             {
                 Console.WriteLine((f()));
             }*/
-
+            Console.WriteLine();
+            var dealer = new CarDealer();
+            var michael = new Consumer("Michael");
+            dealer.NewCarInfo += michael.NewCarIsHere;
+            dealer.NewCar("法拉利");
+            var john = new Consumer("John");
+            dealer.NewCarInfo += john.NewCarIsHere;
+            dealer.NewCar("宝马");
+            dealer.NewCarInfo -= michael.NewCarIsHere;
+            dealer.NewCar("新车");
             
         }
         static void ProcessAndDisplayNumber(DoubleOp action,double value)//把一个委托作为其第一个参数
