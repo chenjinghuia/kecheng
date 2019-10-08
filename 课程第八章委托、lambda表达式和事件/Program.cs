@@ -106,7 +106,7 @@ namespace 课程第八章委托_lambda表达式和事件
             return e1.Salary < e2.Salary;
         }
     }
-   
+
     class Program
     {
         static void Main(string[] args)
@@ -168,6 +168,38 @@ namespace 课程第八章委托_lambda表达式和事件
             ProcessAndDisplayNumber3(Moloperations, 1.414);
             Console.WriteLine();
 
+
+            string mid = ",好喜欢,";//lambda表达式
+            Func<string, string> lambda = param =>
+               {
+                   param += mid;
+                   param += "于瑶瑶.";
+                   return param;
+               };
+            Console.WriteLine(lambda("陈灰灰"));
+            Console.WriteLine();
+            Func<string, string> oneParam = s =>
+               string.Format("加进去的是：" + s.ToUpper());
+            Console.WriteLine(oneParam("定义test参数"));
+            Console.WriteLine();
+            Func<double, double, double> twoParams = (a, b) => a * b;
+            Console.WriteLine(twoParams(3, 2));
+            int someVal = 5;
+            Func<int, int> f = c => c + someVal;
+            Console.WriteLine(f(5));
+
+            /*var values = new List<int> { 10, 20, 30 };
+            var funcs = new List<Func<int>> ();
+            foreach (var val in values)
+            {
+                funcs.Add(() => val);
+            }
+            foreach(var f in funcs)
+            {
+                Console.WriteLine((f()));
+            }*/
+
+            
         }
         static void ProcessAndDisplayNumber(DoubleOp action,double value)//把一个委托作为其第一个参数
         {
