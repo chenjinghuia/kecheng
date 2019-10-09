@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace 第9章字符串和正则表达式
 {
@@ -97,6 +98,59 @@ namespace 第9章字符串和正则表达式
             //StringBuilder sb = new StringBuilder(20);给定的容量创建一个空的类
             StringBuilder SB = new StringBuilder(100,500);
             SB.Capacity = 90;
+
+            const string pattern = @"\bn";//查找以n开头的字
+            const string pattern2 = @"ion\b";//查找以ion结尾的字
+            const string pattern3 = @"\ba\S*ion\b";//以字母a开头，以序列ion结尾的所有字（序列\S*表示任意个不是空白字符的字符，*为限定符，其含义是前面的字符可以重复任意次）
+
+        Find1();
+        Console.ReadLine();
+    }
+    static void Find1()
+    {
+        const string text = @"XML has made a major impact in almost every aspect of 
+            software development. Designed as an open, extensible, self-describing 
+            language, it has become the standard for data and document delivery on 
+            the web. The panoply of XML-related technologies continues to develop 
+            at breakneck speed, to enable validation, navigation, transformation, 
+            linking, querying, description, and messaging of data.";
+        const string pattern = @"\bn\S*ion\b";
+        MatchCollection matches = Regex.Matches(text, pattern,
+           RegexOptions.IgnoreCase | RegexOptions.IgnorePatternWhitespace |
+           RegexOptions.ExplicitCapture);
+        WriteMatches(text, matches);
+    }
+
+    static void Find2()
+    {
+        const string text = @"XML has made a major impact in almost every aspect of 
+            software development. Designed as an open, extensible, self-describing 
+            language, it has become the standard for data and document delivery on 
+            the web. The panoply of XML-related technologies continues to develop 
+            at breakneck speed, to enable validation, navigation, transformation, 
+            linking, querying, description, and messaging of data.";
+        const string pattern = @"\bn";
+        MatchCollection matches = Regex.Matches(text, pattern,
+          RegexOptions.IgnoreCase);
+        WriteMatches(text, matches);
+    }
+    static void WriteMatches(string text,MatchCollection matches)
+    {
+        Console.WriteLine("Original text was: \n\n" + text + "\n");
+        Console.WriteLine("No. of matches: " + matches.Count);
+        foreach(Match nextMatch in matches)
+        {
+            int index = nextMatch.Index;
+            string result = nextMatch.ToString();
+            int charsBefore = (index < 5) ? index : 5;
+            int fromEnd = text.Length - index - result.Length;
+            int charsAfter = (fromEnd < 5) ? fromEnd : 5;
+            int charsToDisplay = charsBefore + charsAfter + result.Length;
+
+            Console.WriteLine("Index: {0}, \tString: {1}, \t{2}",
+               index, result,
+               text.Substring(index - charsBefore, charsToDisplay));
         }
+    }
     }
 
