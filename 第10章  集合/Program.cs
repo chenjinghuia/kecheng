@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace 第10章__集合
 {
@@ -138,9 +140,73 @@ namespace 第10章__集合
                 default:
                     throw new ArgumentException("Invalid Compare Type");
             }
+        }         
+    }
+    public class Document
+    {
+        public string Title { get; private set; }
+        public string Content { get; private set; }
+        public Document(string title,string content)
+        {
+            this.Title = title;
+            this.Content = content;
         }
-       
-        
+    }
+    public class DocumentManager
+    {
+        private readonly Queue<Document> documentQueue = new Queue<Document>();
+        public void AddDocument(Document doc)
+        {
+            lock(this)
+            {
+                documentQueue.Enqueue(doc);
+            }
+        }
+        public Document GetDocument()
+        {
+            Document doc = null;
+            lock(this)
+            {
+                doc = documentQueue.Dequeue();
+            }
+            return doc;
+        }
+        public bool IsDocumentAvailable
+        {
+            get
+            {
+                return documentQueue.Count > 0;
+            }
+        }
+    }
+    public class ProcessDocuments
+    {
+        public static void Static(DocumentManager dm)
+        {
+            Task.Factory.StartNew(new ProcessDocuments(dm).Run);
+        }
+        protected ProcessDocuments (DocumentManager dm)
+        {
+            if(dm==null)
+            {
+                throw new ArgumentNullException("dm");
+            }
+            documentManager = dm;
+        }
+        private DocumentManager documentManager;
+        protected void Run()
+        {
+            while(true)
+            {
+                if(documentManager.IsDocumentAvailable)
+                {
+                    Document doc = documentManager.GetDocument();
+                    Console.WriteLine("Processing document {0}", doc.Title);
+                }
+                Thread.Sleep(new Random().Next(20));
+
+            }
+        }
     }
     //public sealed Delegate TOutput Converter<TInput,TOutout>(TInput from);
     public class Person
@@ -228,7 +294,17 @@ namespace 第10章__集合
             //8.类型转换
             List<Person> persons = racers.ConvertAll<Person>(
                 r => new Person(r.FirstName + " " + r.LastName));//创建并返回了一个新的Person对象（对FirstName，LastName进行转换）
-            
+
+            Console.WriteLine();
+            var dm = new DocumentManager();
+            ProcessDocuments.Static(dm);
+            for (int i = 0; i < 10; i++)
+            {
+                var doc = new Document("Doc" + i.ToString(), "content");
+                dm.AddDocument(doc);
+                Console.WriteLine("Added document{0}", doc.Title);
+                Thread.Sleep(new Random().Next(20));
+            }
         }
     }
 }
