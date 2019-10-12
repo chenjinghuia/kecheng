@@ -204,7 +204,6 @@ namespace 第10章__集合
                     Console.WriteLine("Processing document {0}", doc.Title);
                 }
                 Thread.Sleep(new Random().Next(20));
-
             }
         }
     }
@@ -295,7 +294,7 @@ namespace 第10章__集合
             List<Person> persons = racers.ConvertAll<Person>(
                 r => new Person(r.FirstName + " " + r.LastName));//创建并返回了一个新的Person对象（对FirstName，LastName进行转换）
 
-            Console.WriteLine();
+            /*Console.WriteLine();
             var dm = new DocumentManager();
             ProcessDocuments.Static(dm);
             for (int i = 0; i < 10; i++)
@@ -304,7 +303,25 @@ namespace 第10章__集合
                 dm.AddDocument(doc);
                 Console.WriteLine("Added document{0}", doc.Title);
                 Thread.Sleep(new Random().Next(20));
+            }*/
+
+            Console.WriteLine();
+            var zhan = new Stack<char>();
+            zhan.Push('a');
+            zhan.Push('b');
+            zhan.Push('c');
+            Console.WriteLine("First diedai:");
+            foreach (char r in zhan)
+            {
+                Console.Write(r);
             }
+            Console.WriteLine();
+            Console.WriteLine("Second diedai:");
+            while(zhan.Count>0)
+            {
+                Console.Write(zhan.Pop());
+            }
+            Console.WriteLine();
         }
     }
 }
