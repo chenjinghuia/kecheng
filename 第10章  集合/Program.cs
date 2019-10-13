@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -470,6 +471,21 @@ namespace 第10章__集合
 
             }
 
+            Console.WriteLine();
+            var xuanshou = new List<Racer>();
+            xuanshou.Add(new Racer(26, "Jacques", "Villeneuve", "Canada", 11));
+            xuanshou.Add(new Racer(18, "Alan", "Jones", "Australia", 12));
+            xuanshou.Add(new Racer(11, "Jackie", "Stewart", "United Kingdom", 27));
+            xuanshou.Add(new Racer(15, "James", "Hunt", "United Kingdom", 10));
+            xuanshou.Add(new Racer(5, "Jack", "Brabham", "Australia", 14));
+
+            var lookupRacers = xuanshou.ToLookup(r => r.Country);
+
+            foreach (Racer r in lookupRacers["Australia"])
+            {
+                Console.WriteLine(r);
+            }
+            
         }
     }
 }
