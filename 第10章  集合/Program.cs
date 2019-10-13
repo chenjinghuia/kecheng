@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Threading;
@@ -525,6 +526,38 @@ namespace 第10章__集合
             {
                 Console.WriteLine(team);
             }//ExceptWith（）方法从allTeams集中删除所有privateTeams
+
+            Console.WriteLine();
+            var data = new ObservableCollection<string>();
+            data.CollectionChanged += Data_CollectionChanged;
+            data.Add("One");
+            data.Add("Two");
+            data.Insert(1, "Three");
+            data.Remove("One");            
+        }
+        static void Data_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            Console.WriteLine("action: {0}", e.Action.ToString());
+
+            if (e.OldItems != null)
+            {
+                Console.WriteLine("starting index for old item(s): {0}", e.OldStartingIndex);
+                Console.WriteLine("old item(s):");
+                foreach (var item in e.OldItems)
+                {
+                    Console.WriteLine(item);
+                }
+            }
+            if (e.NewItems != null)
+            {
+                Console.WriteLine("starting index for new item(s): {0}", e.NewStartingIndex);
+                Console.WriteLine("new item(s): ");
+                foreach (var item in e.NewItems)
+                {
+                    Console.WriteLine(item);
+                }
+            }
+            Console.WriteLine();
         }
     }
 }
