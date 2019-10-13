@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.Contracts;
@@ -418,7 +419,7 @@ namespace 第10章__集合
                 }
             }//调用TryGetValue（）方法，尝试获得指定键的值，如果有该key则返回true，没有则表示指定键对应的值不存在
 
-            Console.WriteLine();
+            /*Console.WriteLine();
             var employees = new Dictionary<EmployeeId, Employee>(31);
 
             var idTony = new EmployeeId("C3755");
@@ -470,7 +471,7 @@ namespace 第10章__集合
                     Console.WriteLine(ex.Message);
                 }
 
-            }
+            }*/
 
             Console.WriteLine();
             var xuanshou = new List<Racer>();
@@ -533,7 +534,10 @@ namespace 第10章__集合
             data.Add("One");
             data.Add("Two");
             data.Insert(1, "Three");
-            data.Remove("One");            
+            data.Remove("One");
+
+            Console.WriteLine();
+            BitArrayDemo();
         }
         static void Data_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
@@ -558,6 +562,64 @@ namespace 第10章__集合
                 }
             }
             Console.WriteLine();
+
+           
         }
+        
+        static void BitArrayDemo()
+        {
+            var bits1 = new BitArray(8);
+            bits1.SetAll(true);
+            bits1.Set(1, false);
+            bits1[5] = false;
+            bits1[7] = false;
+            Console.Write("initialized: ");
+            DisplayBits(bits1);
+            Console.WriteLine();//initialized:10111010
+
+            Console.Write(" not ");
+            DisplayBits(bits1);
+            bits1.Not();
+            Console.Write(" = ");
+            DisplayBits(bits1);
+            Console.WriteLine();//not 10111010 = 01000101
+
+            var bits2 = new BitArray(bits1);
+            bits2[0] = true;
+            bits2[1] = false;
+            bits2[4] = true;
+            DisplayBits(bits1);
+            Console.Write(" or ");
+            DisplayBits(bits2);
+            Console.Write(" : ");
+            bits1.Or(bits2);
+            DisplayBits(bits1);
+            Console.WriteLine();//01000101 or 10001101 = 11001101（两个输入数组其中一个为true都设置为true）
+
+            DisplayBits(bits2);
+            Console.Write(" and ");
+            DisplayBits(bits1);
+            Console.Write(" : ");
+            bits2.And(bits1);
+            DisplayBits(bits2);
+            Console.WriteLine();//10001101 and 11001101 = 100001101(两个输入数组中都为true的位设置为true)
+
+            DisplayBits(bits1);
+            Console.Write(" xor ");
+            DisplayBits(bits2);
+            bits1.Xor(bits2);
+            Console.Write(" : ");
+            DisplayBits(bits1);
+            Console.WriteLine();//11001101 xor 10001101 = 01000000（两个输入数组只有一个数组设置为1，结果为才是1）
+
+        }
+        static void DisplayBits(BitArray bits)
+        {
+            foreach (bool bit in bits)
+            {
+                Console.Write(bit ? 1 : 0);
+            }
+        }
+
     }
 }
