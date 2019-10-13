@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Diagnostics.Contracts;
@@ -290,6 +291,11 @@ namespace 第10章__集合
                   id.ToString(), name, salary);
         }
     }
+    public class Account
+    {
+        public string Name { get; set; }
+        public decimal Amount { get; set; }
+    }
     class Program
     {
         static void Main(string[] args)
@@ -541,6 +547,7 @@ namespace 第10章__集合
             Console.WriteLine();
             BitArrayDemo();
             BitVectorDemo();
+            ListSample();
         }
         static void Data_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         {
@@ -682,6 +689,47 @@ namespace 第10章__集合
             foreach (bool bit in bits)
             {
                 Console.Write(bit ? 1 : 0);
+            }
+        }
+
+        private static void ArraySample()
+        {
+            ImmutableArray<string> a1 = ImmutableArray.Create<string>();
+            ImmutableArray<string> a2 = a1.Add("Williams");
+            ImmutableArray<string> a3 = a2.Add("Ferrari").Add("Mercedes").Add("Red Bull Racing");
+
+        }
+        private static void ListSample()
+        {
+            List<Account> accounts = new List<Account>()
+            {
+                new Account {
+                      Name = "Scrooge McDuck",
+                      Amount = 667377678765m
+                },
+                new Account {
+                      Name = "Donald Duck",
+                      Amount = -200m
+                },
+                new Account {
+                     Name = "Ludwig von Drake",
+                     Amount = 20000m
+                }
+            };
+            ImmutableList<Account> immutableAccounts = accounts.ToImmutableList();
+            ImmutableList<Account>.Builder builder = immutableAccounts.ToBuilder();//ToBuilder方法创建一个构建器
+            for(int i=0;i<builder.Count;i++)
+            {
+                Account a = builder[i];
+                if(a.Amount>0)
+                {
+                    builder.Remove(a);
+                }
+            }
+            ImmutableList<Account> overdrawnAccounts = builder.ToImmutable();//创建一个新的不变集合，这个集合用于输出所有透支的账户
+            foreach(var item in overdrawnAccounts)
+            {
+                Console.WriteLine("{0} {1}", item.Name, item.Amount);
             }
         }
 
