@@ -485,7 +485,46 @@ namespace 第10章__集合
             {
                 Console.WriteLine(r);
             }
-            
+
+            Console.WriteLine();
+            var companyTeams = new HashSet<string>() { "Ferrari", "McLaren", "Mercedes" };
+            var traditionalTeams = new HashSet<string>() { "Ferrari", "McLaren" };
+            var privateTeams = new HashSet<string>() { "Red Bull", "Lotus", "Toro Rosso", "Force India", "Sauber" };
+
+            if (privateTeams.Add("Williams"))
+                Console.WriteLine("Williams added");
+            if (!companyTeams.Add("McLaren"))
+                Console.WriteLine("McLaren was already in this set");
+            if (traditionalTeams.IsSubsetOf(companyTeams))
+            {
+                Console.WriteLine("traditionalTeams is subset of companyTeams");
+            }
+            if (companyTeams.IsSupersetOf(traditionalTeams))
+            {
+                Console.WriteLine("companyTeams is a superset of traditionalTeams");
+            }
+            traditionalTeams.Add("Williams");
+            if (privateTeams.Overlaps(traditionalTeams))
+            {
+                Console.WriteLine("At least one team is the same with the traditional " +
+                      "and private teams");
+            }
+            var allTeams = new SortedSet<string>(companyTeams);
+            allTeams.UnionWith(privateTeams);
+            allTeams.UnionWith(traditionalTeams);
+            Console.WriteLine();
+            Console.WriteLine("all teams");
+            foreach (var team in allTeams)
+            {
+                Console.WriteLine(team);
+            }//UnionWith()方法可继续填充
+            allTeams.ExceptWith(privateTeams);
+            Console.WriteLine();
+            Console.WriteLine("no private team left");
+            foreach (var team in allTeams)
+            {
+                Console.WriteLine(team);
+            }//ExceptWith（）方法从allTeams集中删除所有privateTeams
         }
     }
 }
