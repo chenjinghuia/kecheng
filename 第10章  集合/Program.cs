@@ -322,6 +322,35 @@ namespace 第10章__集合
                 Console.Write(zhan.Pop());
             }
             Console.WriteLine();
+
+            Console.WriteLine();
+            var books = new SortedList<string, string>();
+            books.Add("Professional WPF Programming", "978–0–470–04180–2");
+            books.Add("Professional ASP.NET MVC 3", "978–1–1180–7658–3");
+
+            books["Beginning Visual C# 2010"] = "978–0–470-50226-6";
+            books["Professional C# 4 and .NET 4"] = "978–0–470–50225–9";
+            foreach (KeyValuePair<string, string> book in books)
+            {
+                Console.WriteLine("{0}, {1}", book.Key, book.Value);
+            }
+            foreach (string title in books.Keys)//Keys属性返回IList<TKey>
+            {
+                Console.WriteLine(title);
+            }
+            foreach (string isbn in books.Values)//Values属性返回IList<TValue>
+            {
+                Console.WriteLine(isbn);
+            }
+            {
+                string zhis;
+                string keys = "Professional C# 7.0";
+                if (!books.TryGetValue(keys, out zhis))
+                {
+                    Console.WriteLine("{0} not found", keys);
+                }
+            }//调用TryGetValue（）方法，尝试获得指定键的值，如果有该key则返回true，没有则表示指定键对应的值不存在
+
         }
     }
 }
