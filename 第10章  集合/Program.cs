@@ -220,6 +220,71 @@ namespace 第10章__集合
                 return name;
             }
         }
+    public class EmployeeIdException:Exception
+    {
+        public EmployeeIdException(string message) : base(message) { }
+    }
+    public struct EmployeeId:IEquatable<EmployeeId>
+    {
+        private readonly char prefix;
+        private readonly int number;
+        public EmployeeId(string id)
+        {
+            //Contrace.Requires<ArgumentNullException>(id != null);
+            prefix = (id.ToUpper())[0];
+            int numlength = id.Length - 1;
+            try
+            {
+                number = int.Parse(id.Substring(1, numlength > 6 ? 6 : numlength));
+            }
+            catch (FormatException)
+            {
+                throw new EmployeeIdException("Invaild EmployeeId format");
+            }
+        }
+        public override string ToString()
+        {
+            return prefix.ToString() + string.Format("{0,6:000000}", number);
+        }
+        public override int GetHashCode()
+        {
+            return (number ^ number << 16) * 0x15051505;
+        }
+        public bool Equals(EmployeeId other)
+        {
+            if (other == null) return false;
+
+            return (prefix == other.prefix && number == other.number);
+        }
+        public override bool Equals(object obj)
+        {
+            return Equals((EmployeeId)obj);
+        }
+        public static bool operator ==(EmployeeId left, EmployeeId right)
+        {
+            return left.Equals(right);
+        }
+        public static bool operator !=(EmployeeId left, EmployeeId right)
+        {
+            return !(left == right);
+        }
+    }    public class Employee
+    {
+        private string name;
+        private decimal salary;
+        private readonly EmployeeId id;
+        public Employee(EmployeeId id, string name, decimal salary)
+        {
+            this.id = id;
+            this.name = name;
+            this.salary = salary;
+        }
+        public override string ToString()
+        {
+            return String.Format("{0}: {1, -20} {2:C}",
+                  id.ToString(), name, salary);
+        }
+    }
     class Program
     {
         static void Main(string[] args)
@@ -350,6 +415,60 @@ namespace 第10章__集合
                     Console.WriteLine("{0} not found", keys);
                 }
             }//调用TryGetValue（）方法，尝试获得指定键的值，如果有该key则返回true，没有则表示指定键对应的值不存在
+
+            Console.WriteLine();
+            var employees = new Dictionary<EmployeeId, Employee>(31);
+
+            var idTony = new EmployeeId("C3755");
+            var tony = new Employee(idTony, "Tony Stewart", 379025.00m);
+            employees.Add(idTony, tony);
+            Console.WriteLine(tony);
+
+            var idCarl = new EmployeeId("F3547");
+            var carl = new Employee(idCarl, "Carl Edwards", 403466.00m);
+            employees.Add(idCarl, carl);
+            Console.WriteLine(carl);
+
+            var idKevin = new EmployeeId("C3386");
+            var kevin = new Employee(idKevin, "Kevin Harwick", 415261.00m);
+            employees.Add(idKevin, kevin);
+            Console.WriteLine(kevin);//用Add（）方法创建员工对象和ID
+
+            var idMatt = new EmployeeId("F3323");
+            var matt = new Employee(idMatt, "Matt Kenseth", 1589390.00m);
+            employees[idMatt] = matt;
+            Console.WriteLine(matt);//使用索引器，将键和值添加到字典中
+
+            var idBrad = new EmployeeId("D3234");
+            var brad = new Employee(idBrad, "Brad Keselowski", 322295.00m);
+            employees[idBrad] = brad;
+            Console.WriteLine(brad);
+            while(true)
+            {
+                Console.WriteLine("Enter employee id(x to exit)>");
+                var userInput = Console.ReadLine();
+                userInput = userInput.ToUpper();
+                if (userInput == "X") break;
+                EmployeeId id;
+                try
+                {
+                    id = new EmployeeId(userInput);
+                    Employee employee;
+                    if(!employees.TryGetValue(id,out employee))
+                    {
+                        Console.WriteLine("Employee with id {0} does not exist", id);
+                    }
+                    else
+                    {
+                        Console.WriteLine(employee);
+                    }
+                }
+                catch (EmployeeIdException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+            }
 
         }
     }
