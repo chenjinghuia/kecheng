@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Diagnostics.Contracts;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading;
@@ -296,6 +298,7 @@ namespace 第10章__集合
         public string Name { get; set; }
         public decimal Amount { get; set; }
     }
+
     class Program
     {
         static void Main(string[] args)
@@ -546,7 +549,9 @@ namespace 第10章__集合
 
             Console.WriteLine();
             BitArrayDemo();
+            Console.WriteLine();
             BitVectorDemo();
+            Console.WriteLine();
             ListSample();
         }
         static void Data_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -732,6 +737,5 @@ namespace 第10章__集合
                 Console.WriteLine("{0} {1}", item.Name, item.Amount);
             }
         }
-
     }
 }

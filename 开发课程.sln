@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "课程第八章委托、lam
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "第9章字符串和正则表达式", "第9章字符串和正则表达式\第9章字符串和正则表达式.csproj", "{6E1C7D48-BF2C-47C0-A019-F3EF3DDAEBB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "第10章  集合", "第10章  集合\第10章  集合.csproj", "{36511616-CEA3-47D4-9D6F-4B321D4ACF17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "第10章  集合", "第10章  集合\第10章  集合.csproj", "{36511616-CEA3-47D4-9D6F-4B321D4ACF17}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "第11章LINQ", "第11章LINQ\第11章LINQ.csproj", "{59E636E7-16E0-4536-8EEC-DE0E02BDD912}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{36511616-CEA3-47D4-9D6F-4B321D4ACF17}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{36511616-CEA3-47D4-9D6F-4B321D4ACF17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{36511616-CEA3-47D4-9D6F-4B321D4ACF17}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59E636E7-16E0-4536-8EEC-DE0E02BDD912}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59E636E7-16E0-4536-8EEC-DE0E02BDD912}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59E636E7-16E0-4536-8EEC-DE0E02BDD912}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59E636E7-16E0-4536-8EEC-DE0E02BDD912}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
