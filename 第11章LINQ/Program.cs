@@ -877,6 +877,12 @@ namespace 第11章LINQ
             Aggregate();
             Console.WriteLine();
             Aggregate2();
+            Console.WriteLine();
+            change();
+            Console.WriteLine();
+            change2();
+            Console.WriteLine();
+            Range();
         }
         private static void LinqQuery()
         {
@@ -1101,6 +1107,48 @@ namespace 第11章LINQ
                 Console.WriteLine("{0} {1}", country.Country, country.Wins);
             }
 
+        }
+        static void change()
+        {
+            List<Racer> racers = (from r in Formulal.GetChampions()
+                                  where r.Starts > 150
+                                  orderby r.Starts descending
+                                  select r).ToList();
+            foreach(var racer in racers)
+            {
+                Console.WriteLine("{0} {0:S}", racer);
+            }
+        }
+        static void change2()
+        {
+            var racers = (from r in Formulal.GetChampions()
+                          from c in r.Cars
+                          select new
+                          {
+                              Car = c,
+                              Racer = r
+                          }).ToLookup(cr => cr.Car, cr => cr.Racer);//ToLookup()方法的一个重载版本传递一个键和一个元素选择器
+            if(racers.Contains("Williams"))
+            {
+                foreach (var WilliamsRacer in racers["Williams"])
+                {
+                    Console.WriteLine(WilliamsRacer);
+                }
+            }
+            
+        }
+        static void Range()
+        {
+            var values = Enumerable.Range(1, 20);
+            foreach(var item in values)
+            {
+                Console.Write("{0} ", item);
+            }
+            var values2 = Enumerable.Range(1, 20).Select(n => n * 3);
+            foreach(var n in values2)
+            {
+                Console.Write("{0} ",n);
+            }
         }
 
     }
