@@ -249,6 +249,29 @@ namespace 第11章LINQ
             {
                 Console.WriteLine("{0, -10} {1}", item.Country, item.Count);
             }
+
+            Console.WriteLine();
+            var country = from r in Formulal.GetChampions()
+                          group r by r.Country into g
+                          orderby g.Count() descending, g.Key
+                          where g.Count() >= 2
+                          select new
+                          {
+                              Country=g.Key,
+                              Count=g.Count(),
+                              Racers=from r1 in g
+                                     orderby r1.LastName
+                                     select r1.FirstName+" "+r1.LastName
+                          };
+            foreach(var item in country)
+            {
+                Console.WriteLine("{0, -10} {1}", item.Country, item.Count);
+                foreach (var name in item.Racers)
+                {
+                    Console.Write("{0}; ", name);
+                }
+                Console.WriteLine();
+            }
         }
         private static void LinqQuery()
         {
