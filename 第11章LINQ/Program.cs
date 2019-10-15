@@ -160,6 +160,14 @@ namespace 第11章LINQ
                 Console.WriteLine("{0:A}", R);
             }
 
+            Console.WriteLine();
+            var racer = Formulal.GetChampions().
+                Where((r, index) => r.LastName.StartsWith("A") && index % 2 != 0);
+            foreach(var r in racer)
+            {
+                Console.WriteLine("{0:A}", r);
+            }
+
 
 
         }
