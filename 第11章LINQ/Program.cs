@@ -871,6 +871,8 @@ namespace 第11章LINQ
             SetOperations();
             Console.WriteLine();
             ZipOperation();
+            Console.WriteLine();
+            Fenqu();
         }
         private static void LinqQuery()
         {
@@ -1034,5 +1036,31 @@ namespace 第11章LINQ
             }
 
         }
+        static void Fenqu()
+        {
+            int pageSize = 5;
+
+            int numberPages = (int)Math.Ceiling(Formulal.GetChampions().Count() /
+                  (double)pageSize);
+
+            for (int page = 0; page < numberPages; page++)
+            {
+                Console.WriteLine("Page {0}", page);
+
+                var racers =
+                   (from r in Formulal.GetChampions()
+                    orderby r.LastName, r.FirstName
+                    select r.FirstName + " " + r.LastName).
+                   Skip(page * pageSize).Take(pageSize);
+
+                foreach (var name in racers)
+                {
+                    Console.WriteLine(name);
+                }
+                Console.WriteLine();
+            }
+
+        }
+
     }
 }
