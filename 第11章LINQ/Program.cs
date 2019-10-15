@@ -865,6 +865,12 @@ namespace 第11章LINQ
 
             Console.WriteLine();
             Conect();
+            Console.WriteLine();
+            //Jihe();
+            Console.WriteLine();
+            SetOperations();
+            Console.WriteLine();
+            ZipOperation();
         }
         private static void LinqQuery()
         {
@@ -973,6 +979,60 @@ namespace 第11章LINQ
                     Console.WriteLine("{0} {1}", results.Year, results.Position);
                 }
             }
+        }
+        static void Jihe()
+        {
+            var ferrariDrivers = from r in Formulal.GetChampions()
+                                 from c in r.Cars
+                                 where c == "Ferrari"
+                                 orderby r.LastName
+                                 select r;
+            foreach (var racer in ferrariDrivers)
+            {
+                Console.WriteLine(racer);
+            }
+
+        }
+        static void SetOperations()
+        {
+            Func<string, IEnumerable<Racer>> racersByCar =
+                car => from r in Formulal.GetChampions()
+                       from c in r.Cars
+                       where c == car
+                       orderby r.LastName
+                       select r;
+            Console.WriteLine("World champion with Ferrari and McLaren");
+            foreach (var racer in racersByCar("Ferrari").Intersect(racersByCar("McLaren")))
+            {
+                Console.WriteLine(racer);
+            }
+        }
+        static void ZipOperation()
+        {
+            var racerNames = from r in Formulal.GetChampions()
+                             where r.Country == "Italy"
+                             orderby r.Wins descending
+                             select new
+                             {
+                                 Name = r.FirstName + " " + r.LastName
+                             };
+
+            var racerNamesAndStarts = from r in Formulal.GetChampions()
+                                      where r.Country == "Italy"
+                                      orderby r.Wins descending
+                                      select new
+                                      {
+                                          LastName = r.LastName,
+                                          Starts = r.Starts
+                                      };
+
+
+            var racers = racerNames.Zip(racerNamesAndStarts, (first, second) => first.Name + ", starts: " + second.Starts);
+            foreach (var r in racers)
+            {
+                Console.WriteLine(r);
+            }
+
         }
     }
 }
