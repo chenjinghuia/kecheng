@@ -873,6 +873,10 @@ namespace 第11章LINQ
             ZipOperation();
             Console.WriteLine();
             Fenqu();
+            Console.WriteLine();
+            Aggregate();
+            Console.WriteLine();
+            Aggregate2();
         }
         private static void LinqQuery()
         {
@@ -1058,6 +1062,43 @@ namespace 第11章LINQ
                     Console.WriteLine(name);
                 }
                 Console.WriteLine();
+            }
+
+        }
+        static void Aggregate()//返回冠军次数超过3次的赛车手
+        {
+            var query = from r in Formulal.GetChampions()
+                        let numberYears = r.Years.Count()
+                        where numberYears >= 3
+                        orderby numberYears descending, r.LastName
+                        select new
+                        {
+                            Name = r.FirstName + " " + r.LastName,
+                            TimesChampion = numberYears
+                        };
+
+            foreach (var r in query)
+            {
+                Console.WriteLine("{0} {1}", r.Name, r.TimesChampion);
+            }
+        }
+        static void Aggregate2()//计算一个国家赢得比赛的总次数
+        {
+            var countries = (from c in
+                                 from r in Formulal.GetChampions()
+                                 group r by r.Country into c
+                                 select new
+                                 {
+                                     Country = c.Key,
+                                     Wins = (from r1 in c
+                                             select r1.Wins).Sum()
+                                 }
+                             orderby c.Wins descending, c.Country
+                             select c).Take(5);
+
+            foreach (var country in countries)
+            {
+                Console.WriteLine("{0} {1}", country.Country, country.Wins);
             }
 
         }
