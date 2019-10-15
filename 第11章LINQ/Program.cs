@@ -201,6 +201,27 @@ namespace 第11章LINQ
                 Console.WriteLine(d);
             }
 
+            Console.WriteLine();
+            Console.WriteLine("方法1：");
+            var paixu = (from r in Formulal.GetChampions()
+                         orderby r.Country, r.LastName, r.FirstName
+                         select r).Take(10);
+            foreach(var r in paixu)
+            {
+                Console.WriteLine(r.Country+":"+r.LastName+","+r.FirstName);
+            }
+            Console.WriteLine();
+            Console.WriteLine("方法2：");
+            var Paixu = Formulal.GetChampions().
+                OrderBy(r => r.Country).
+                ThenBy(r => r.LastName).
+                ThenBy(r => r.FirstName).
+                Take(10);
+            foreach (var r in paixu)
+            {
+                Console.WriteLine(r.Country + ":" + r.LastName + "," + r.FirstName);
+            }
+
 
 
         }
