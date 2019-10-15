@@ -141,6 +141,27 @@ namespace 第11章LINQ
             ExtensionMethods();
             Console.WriteLine();
             DeferredQuery();
+            Console.WriteLine();
+            var racers = from r in Formulal.GetChampions()
+                         where r.Wins > 15 &&
+                         (r.Country == "Brazil" || r.Country == "Austria")
+                         select r;
+            var Racers = Formulal.GetChampions().
+                Where(R => R.Wins > 15 && (R.Country == "Brazil" || R.Country == "Austria")).
+                Select(R => R);
+            Console.WriteLine("LINQ查询语法完成：");
+            foreach (var r in racers)
+            {
+                Console.WriteLine("{0:A}",r);
+            }
+            Console.WriteLine("扩展方法Where（）和Select（）完成：");
+            foreach (var R in Racers)
+            {
+                Console.WriteLine("{0:A}", R);
+            }
+
+
+
         }
         private static void LinqQuery()
         {
