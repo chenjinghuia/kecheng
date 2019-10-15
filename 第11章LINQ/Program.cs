@@ -152,7 +152,7 @@ namespace 第11章LINQ
             Console.WriteLine("方法1：LINQ查询语法完成");
             foreach (var r in racers)
             {
-                Console.WriteLine("{0:A}",r);
+                Console.WriteLine("{0:A}", r);
             }
             Console.WriteLine();
             Console.WriteLine("方法2：扩展方法Where（）和Select（）完成：");
@@ -164,7 +164,7 @@ namespace 第11章LINQ
             Console.WriteLine();
             var racer = Formulal.GetChampions().
                 Where((r, index) => r.LastName.StartsWith("A") && index % 2 != 0);
-            foreach(var r in racer)
+            foreach (var r in racer)
             {
                 Console.WriteLine("{0:A}", r);
             }
@@ -172,7 +172,7 @@ namespace 第11章LINQ
             Console.WriteLine();
             object[] data = { "one", 2, 3, "four", "five", 6 };
             var query = data.OfType<string>();
-            foreach(var S in query)
+            foreach (var S in query)
             {
                 Console.WriteLine(S);
             }
@@ -183,8 +183,8 @@ namespace 第11章LINQ
                                  from c in r.Cars
                                  where c == "Ferrari"
                                  orderby r.LastName
-                                 select r.FirstName + " " + r.LastName;          
-            foreach(var d in ferrariDrivers)
+                                 select r.FirstName + " " + r.LastName;
+            foreach (var d in ferrariDrivers)
             {
                 Console.WriteLine(d);
             }
@@ -206,9 +206,9 @@ namespace 第11章LINQ
             var paixu = (from r in Formulal.GetChampions()
                          orderby r.Country, r.LastName, r.FirstName
                          select r).Take(10);
-            foreach(var r in paixu)
+            foreach (var r in paixu)
             {
-                Console.WriteLine(r.Country+":"+r.LastName+","+r.FirstName);
+                Console.WriteLine(r.Country + ":" + r.LastName + "," + r.FirstName);
             }
             Console.WriteLine();
             Console.WriteLine("方法2：");
@@ -222,8 +222,33 @@ namespace 第11章LINQ
                 Console.WriteLine(r.Country + ":" + r.LastName + "," + r.FirstName);
             }
 
-
-
+            Console.WriteLine();
+            Console.WriteLine("方法1：");
+            var countries = from r in Formulal.GetChampions()
+                            group r by r.Country into g
+                            orderby g.Count() descending, g.Key
+                            where g.Count() >= 2
+                            select new
+                            {
+                                Country = g.Key,
+                                Count = g.Count()
+                            };
+            foreach (var item in countries)
+            {
+                Console.WriteLine("{0, -10} {1}", item.Country, item.Count);
+            }
+            Console.WriteLine();
+            Console.WriteLine("方法2：");
+            var Countries = Formulal.GetChampions().
+                GroupBy(r => r.Country).
+                OrderByDescending(g => g.Count()).
+                ThenBy(g => g.Key).
+                Where(g => g.Count() >= 2).
+                Select(g => new {Country= g.Key, Count = g.Count()});
+            foreach (var item in Countries)
+            {
+                Console.WriteLine("{0, -10} {1}", item.Country, item.Count);
+            }
         }
         private static void LinqQuery()
         {
