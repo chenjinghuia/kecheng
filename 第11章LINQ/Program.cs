@@ -168,6 +168,14 @@ namespace 第11章LINQ
                 Console.WriteLine("{0:A}", r);
             }
 
+            Console.WriteLine();
+            object[] data = { "one", 2, 3, "four", "five", 6 };
+            var query = data.OfType<string>();
+            foreach(var S in query)
+            {
+                Console.WriteLine(S);
+            }
+
 
 
         }
