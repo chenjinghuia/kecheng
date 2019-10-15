@@ -149,12 +149,13 @@ namespace 第11章LINQ
             var Racers = Formulal.GetChampions().
                 Where(R => R.Wins > 15 && (R.Country == "Brazil" || R.Country == "Austria")).
                 Select(R => R);
-            Console.WriteLine("LINQ查询语法完成：");
+            Console.WriteLine("方法1：LINQ查询语法完成");
             foreach (var r in racers)
             {
                 Console.WriteLine("{0:A}",r);
             }
-            Console.WriteLine("扩展方法Where（）和Select（）完成：");
+            Console.WriteLine();
+            Console.WriteLine("方法2：扩展方法Where（）和Select（）完成：");
             foreach (var R in Racers)
             {
                 Console.WriteLine("{0:A}", R);
@@ -174,6 +175,30 @@ namespace 第11章LINQ
             foreach(var S in query)
             {
                 Console.WriteLine(S);
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("方法1：使用复合的from子句");
+            var ferrariDrivers = from r in Formulal.GetChampions()
+                                 from c in r.Cars
+                                 where c == "Ferrari"
+                                 orderby r.LastName
+                                 select r.FirstName + " " + r.LastName;          
+            foreach(var d in ferrariDrivers)
+            {
+                Console.WriteLine(d);
+            }
+            Console.WriteLine();
+            Console.WriteLine("方法二：把复合的from字句和LINQ查询转换为SelectMany（）扩展方法");
+            var FerrariDrivers = Formulal.GetChampions().
+                SelectMany(r => r.Cars,
+                (r, c) => new { Racer = r, car = c }).
+                Where(r => r.car == "Ferrari").
+                OrderBy(r => r.Racer.LastName).
+                Select(r => r.Racer.FirstName + " " + r.Racer.LastName);
+            foreach (var d in ferrariDrivers)
+            {
+                Console.WriteLine(d);
             }
 
 
