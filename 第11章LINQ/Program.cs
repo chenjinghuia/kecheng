@@ -1151,5 +1151,51 @@ namespace 第11章LINQ
             }
         }
 
+        static IEnumerable<int> SampleData()
+        {
+            const int arraySize = 100000000;
+            var r = new Random();
+            return Enumerable.Range(0, arraySize).Select(x => r.Next(140)).ToList();
+
+        }
+        static void Cancellation()//11.3.3 取消
+        {
+            var data = SampleData();
+
+            Console.WriteLine("filled array");
+            var sum1 = (from x in data
+                        where Math.Log(x) < 4
+                        select x).Average();
+            Console.WriteLine("sync result {0}", sum1);
+
+            var cts = new CancellationTokenSource();
+
+            Task.Factory.StartNew(() =>
+            {
+                try
+                {
+                    var res = (from x in data.AsParallel().WithCancellation(cts.Token)
+                               where Math.Log(x) < 4
+                               select x).Average();
+                    Console.WriteLine("query finished, result: {0}", res);
+                }
+                catch (OperationCanceledException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            });
+
+            Console.WriteLine("query started");
+            Console.Write("cancel? ");
+            string input = Console.ReadLine();
+            if (input.ToLower().Equals("y"))
+            {
+                cts.Cancel();
+                Console.WriteLine("sent a cancel");
+            }
+
+            Console.WriteLine("press return to exit");
+            Console.ReadLine();
+        }
     }
 }
