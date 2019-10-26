@@ -21,7 +21,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "第9章字符串和正则�
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "第10章  集合", "第10章  集合\第10章  集合.csproj", "{36511616-CEA3-47D4-9D6F-4B321D4ACF17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "第11章LINQ", "第11章LINQ\第11章LINQ.csproj", "{59E636E7-16E0-4536-8EEC-DE0E02BDD912}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "第11章LINQ", "第11章LINQ\第11章LINQ.csproj", "{59E636E7-16E0-4536-8EEC-DE0E02BDD912}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "第32章核心ADO.NET", "第32章核心ADO.NET\第32章核心ADO.NET.csproj", "{417A5E51-0AC5-49C7-BCEF-B52B3C180185}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "第12章动态语言扩展", "第12章动态语言扩展\第12章动态语言扩展.csproj", "{93D4105D-7420-4977-8B13-98659FBBEF03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +73,14 @@ Global
 		{59E636E7-16E0-4536-8EEC-DE0E02BDD912}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59E636E7-16E0-4536-8EEC-DE0E02BDD912}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59E636E7-16E0-4536-8EEC-DE0E02BDD912}.Release|Any CPU.Build.0 = Release|Any CPU
+		{417A5E51-0AC5-49C7-BCEF-B52B3C180185}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{417A5E51-0AC5-49C7-BCEF-B52B3C180185}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{417A5E51-0AC5-49C7-BCEF-B52B3C180185}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{417A5E51-0AC5-49C7-BCEF-B52B3C180185}.Release|Any CPU.Build.0 = Release|Any CPU
+		{93D4105D-7420-4977-8B13-98659FBBEF03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93D4105D-7420-4977-8B13-98659FBBEF03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93D4105D-7420-4977-8B13-98659FBBEF03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93D4105D-7420-4977-8B13-98659FBBEF03}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
