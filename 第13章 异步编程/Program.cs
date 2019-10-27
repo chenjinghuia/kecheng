@@ -113,5 +113,28 @@ namespace 第13章_异步编程
             });
 
         }
+        //按顺序调用异步方法
+        private async static void MultipleAsyncMethods()
+        {
+            string s1 = await GreetingAsync("Stephanie");
+            string s2 = await GreetingAsync("Matthias");
+            Console.WriteLine("Finished both methods.\n Result 1: {0}\n Result 2: {1}", s1, s2);
+        }
+        //Task.WhenAll组合器方法
+        private async static void MultipleAsyncMethodsWithCombinators1()
+        {
+            Task<string> t1 = GreetingAsync("Stephanie");
+            Task<string> t2 = GreetingAsync("Matthias");
+            await Task.WhenAll(t1, t2);
+            Console.WriteLine("Finished both methods.\n Result 1: {0}\n Result 2: {1}", t1.Result, t2.Result);
+        }
+        //WhenAll方法返回的Task，是在其中一个传入方法的任务完成了就会返回Task
+        private async static void MultipleAsyncMethodsWithCombinators2()
+        {
+            Task<string> t1 = GreetingAsync("Stephanie");
+            Task<string> t2 = GreetingAsync("Matthias");
+            string[] result = await Task.WhenAll(t1, t2);
+            Console.WriteLine("Finished both methods.\n Result 1: {0}\n Result 2: {1}", result[0], result[1]);
+        }
     }
 }
