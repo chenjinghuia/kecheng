@@ -82,5 +82,19 @@ namespace 第13章_异步编程
                 return Greeting(name);
             });
         }
+        private async static void CallerWithAsync()
+        {
+            Console.WriteLine("started CallerWithAsync in thread {0} and task {1}", Thread.CurrentThread.ManagedThreadId, Task.CurrentId);
+            string result = await GreetingAsync("Stephanie");
+            Console.WriteLine(result);
+            Console.WriteLine("finished GreetingAsync in thread {0} and task {1}", Thread.CurrentThread.ManagedThreadId, Task.CurrentId);
+        }
+
+        private async static void CallerWithAsync2()
+        {
+            Console.WriteLine("started CallerWithAsync in thread {0} and task {1}", Thread.CurrentThread.ManagedThreadId, Task.CurrentId);
+            Console.WriteLine(await GreetingAsync("Stephanie"));
+            Console.WriteLine("finished GreetingAsync in thread {0} and task {1}", Thread.CurrentThread.ManagedThreadId, Task.CurrentId);
+        }
     }
 }
