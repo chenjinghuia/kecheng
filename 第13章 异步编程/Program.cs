@@ -136,5 +136,16 @@ namespace 第13章_异步编程
             string[] result = await Task.WhenAll(t1, t2);
             Console.WriteLine("Finished both methods.\n Result 1: {0}\n Result 2: {1}", result[0], result[1]);
         }
+        private static Func<string, string> greetingInvoker = Greeting;
+
+        static IAsyncResult BeginGreeting(string name, AsyncCallback callback, object state)
+        {
+            return greetingInvoker.BeginInvoke(name, callback, state);
+        }
+
+        static string EndGreeting(IAsyncResult ar)
+        {
+            return greetingInvoker.EndInvoke(ar);
+        }
     }
 }
