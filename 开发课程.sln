@@ -25,7 +25,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "第11章LINQ", "第11章LIN
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "第32章核心ADO.NET", "第32章核心ADO.NET\第32章核心ADO.NET.csproj", "{417A5E51-0AC5-49C7-BCEF-B52B3C180185}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "第12章动态语言扩展", "第12章动态语言扩展\第12章动态语言扩展.csproj", "{93D4105D-7420-4977-8B13-98659FBBEF03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "第12章动态语言扩展", "第12章动态语言扩展\第12章动态语言扩展.csproj", "{93D4105D-7420-4977-8B13-98659FBBEF03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "第13章 异步编程", "第13章 异步编程\第13章 异步编程.csproj", "{FB566FC6-3E68-40C6-9430-8E55C6BD4723}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +83,10 @@ Global
 		{93D4105D-7420-4977-8B13-98659FBBEF03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{93D4105D-7420-4977-8B13-98659FBBEF03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{93D4105D-7420-4977-8B13-98659FBBEF03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB566FC6-3E68-40C6-9430-8E55C6BD4723}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB566FC6-3E68-40C6-9430-8E55C6BD4723}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB566FC6-3E68-40C6-9430-8E55C6BD4723}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB566FC6-3E68-40C6-9430-8E55C6BD4723}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
