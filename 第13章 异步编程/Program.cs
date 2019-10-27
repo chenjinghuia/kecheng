@@ -82,6 +82,7 @@ namespace 第13章_异步编程
                 return Greeting(name);
             });
         }
+        //asyc修饰符只能用于返回Task和void的方法，它不能用于程序的入口点，即Main方法不能使用async修饰符，await只能用于返回Task的方法
         private async static void CallerWithAsync()
         {
             Console.WriteLine("started CallerWithAsync in thread {0} and task {1}", Thread.CurrentThread.ManagedThreadId, Task.CurrentId);
@@ -95,6 +96,22 @@ namespace 第13章_异步编程
             Console.WriteLine("started CallerWithAsync in thread {0} and task {1}", Thread.CurrentThread.ManagedThreadId, Task.CurrentId);
             Console.WriteLine(await GreetingAsync("Stephanie"));
             Console.WriteLine("finished GreetingAsync in thread {0} and task {1}", Thread.CurrentThread.ManagedThreadId, Task.CurrentId);
+        }
+        //Task类的ContinueWith方法定义了任务完成后就调用的代码
+        private static void CallerWithContinuationTask()
+        {
+            Console.WriteLine("started CallerWithContinuationTask in thread {0} and task {1}", Thread.CurrentThread.ManagedThreadId, Task.CurrentId);
+
+            var t1 = GreetingAsync("Stephanie");
+
+
+            t1.ContinueWith(t =>
+            {
+                string result = t.Result;
+                Console.WriteLine(result);
+                Console.WriteLine("finished CallerWithContinuationTask in thread {0} and task {1}", Thread.CurrentThread.ManagedThreadId, Task.CurrentId);
+            });
+
         }
     }
 }
