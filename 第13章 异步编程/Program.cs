@@ -147,5 +147,76 @@ namespace 第13章_异步编程
         {
             return greetingInvoker.EndInvoke(ar);
         }
+        private static async void ConvertingAsyncPattern()
+        {
+            string r = await Task<string>.Factory.FromAsync<string>(BeginGreeting, EndGreeting, "Angela", null);
+            Console.WriteLine(r);
+        }
+        static async Task ThrowAfter(int ms, string message)
+        {
+            await Task.Delay(ms);
+            throw new Exception(message);
+        }
+        //异步方法的异常处理
+        private static async void HandleOneError()
+        {
+            try
+            {
+                await ThrowAfter(2000, "first");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("handled {0}", ex.Message);
+            }
+        }
+        //多个异步方法的异常处理
+        private static async void StartTwoTasks()
+        {
+            try
+            {
+                await ThrowAfter(2000, "first");
+                await ThrowAfter(1000, "second"); // the second call is not invoked because the first method throws an exception
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("handled {0}", ex.Message);
+            }
+        }
+        //WhenAll不管任务是否抛出异常，都会等到两个任务完成
+        private async static void StartTwoTasksParallel()
+        {
+            Task t1 = null;
+            try
+            {
+                t1 = ThrowAfter(2000, "first");
+                Task t2 = ThrowAfter(1000, "second");
+                await Task.WhenAll(t1, t2);
+            }
+            catch (Exception ex)
+            {
+                // just display the exception information of the first task that is awaited within WhenAll
+                Console.WriteLine("handled {0}", ex.Message);
+            }
+        }
+        //Exception属性的AggregateException类型定义InnerExceptions属性
+        private static async void ShowAggregatedException()
+        {
+            Task taskResult = null;
+            try
+            {
+                Task t1 = ThrowAfter(2000, "first");
+                Task t2 = ThrowAfter(1000, "second");
+                await (taskResult = Task.WhenAll(t1, t2));
+            }
+            catch (Exception ex)
+            {
+                // just display the exception information of the first task that is awaited within WhenAll
+                Console.WriteLine("handled {0}", ex.Message);
+                foreach (var ex1 in taskResult.Exception.InnerExceptions)
+                {
+                    Console.WriteLine("inner exception {0} from task {1}", ex1.Message, ex1.Source);
+                }
+            }
+        }
     }
 }
