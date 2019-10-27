@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace 第13章_异步编程
 {
@@ -58,11 +60,27 @@ namespace 第13章_异步编程
             }
         }
     }*/
+
     class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+        }
+        static string Greeting(string name)
+        {
+            Console.WriteLine("running greeting in thread {0} and task {1}", Thread.CurrentThread.ManagedThreadId, Task.CurrentId);
+
+            Thread.Sleep(3000);
+            return string.Format("Hello, {0}", name);
+        }
+        static Task<string> GreetingAsync(string name)
+        {
+            return Task.Run<string>(() =>
+            {
+                Console.WriteLine("running greetingasync in thread {0} and task {1}", Thread.CurrentThread.ManagedThreadId, Task.CurrentId);
+                return Greeting(name);
+            });
         }
     }
 }
